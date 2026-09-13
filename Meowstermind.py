@@ -19,7 +19,7 @@ white  = "\033[37m\u25ce\033[0m "
 blank  = "\033[30m\u25cc\033[0m "
 neutral_cat = "\033[35m=^-ω-^=\033[0m"
 shocked_cat = "\033[35m=^ㅇㅅㅇ^=\033[0m"
-smug_cat = "\033[35m=^-u-^=\033[0m"
+smug_cat =    "\033[35m=^-u-^=\033[0m"
 worried_cat = "\033[35m=^⊏.⊏^=\033[0m"
 
 
