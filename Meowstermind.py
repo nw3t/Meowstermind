@@ -103,7 +103,7 @@ def update_game(key):
 def draw_ui():
     clear_screen()
     print_welcome()
-    debug_secret()
+    #debug_secret()
     for i, each in enumerate(history):
         for historic in each:
             printf(historic)
