@@ -28,6 +28,13 @@ worried_cat = "\033[35m=^⊏.⊏^=\033[0m"
 ################
 colour_cycle = [red, yellow, green, blue, white, black]
 
+def main():
+    print("        hjkl to select, enter to guess, q to quit")
+    print("               =Press Any key to start=")
+    set_secret()
+    while (keypress := readchar.readkey()) != 'q':
+        update_game(keypress)
+        draw_ui()
 
 ################
 # Screen drawing
@@ -175,9 +182,4 @@ def restart_game():
     hint_history.clear()
 
 if __name__ == '__main__':
-    print("        hjkl to select, enter to guess, q to quit")
-    print("               =Press Any key to start=")
-    set_secret()
-    while (keypress := readchar.readkey()) != 'q':
-        update_game(keypress)
-        draw_ui()
+    main()
