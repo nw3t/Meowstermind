@@ -53,7 +53,7 @@ player_guess = [blank, blank, blank, blank]
 hint = []
 secret = [blank, blank, blank, blank]
 player_selection = 1
-feedback = [blank, blank, blank, blank]
+meowster_display = [blank, blank, blank, blank]
 history = []
 hint_history = []
 current_cat = neutral_cat
@@ -116,7 +116,7 @@ def draw_ui():
     for each in player_guess:
         printf(each)
     printf(" <- Player " + current_cat + " Meowster->  ")
-    for each in feedback:
+    for each in meowster_display:
         printf(each)
     newline()
 
