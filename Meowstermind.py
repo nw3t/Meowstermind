@@ -2,7 +2,7 @@
 
 import subprocess
 import random
-import readchar #nonstandard, gotta learn how to package this one
+import readchar
 
 
 ################
