@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import subprocess
+import sys
 import random
 import readchar
 
@@ -160,7 +161,7 @@ def win():
     print("Won in",len(history),"guesses!")
     print("Try again?")
     if readchar.readkey() == 'q':
-        exit()
+        sys.exit()
     else:
         restart_game()
 
