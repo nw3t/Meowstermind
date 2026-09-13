@@ -10,4 +10,4 @@ Make sure that pipx is installed, for instance on Arch `sudo pacman -S python-pi
 
 then 
 
-`./install.sh`
+`chmod +x install.sh && ./install.sh`
