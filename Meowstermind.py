@@ -1,5 +1,4 @@
 #!/home/mykola/PycharmProjects/Meowstermind/.venv/bin/python
-# the above shebang has to go away and be replaced by proper packaging
 
 import subprocess
 import random
@@ -89,9 +88,9 @@ def update_game(key):
             if player_selection > 1:
                 player_selection -= 1
         case 'j':
-            player_guess[index] = prev_colour if colour_index is not colour_blank else black
+            player_guess[index] = prev_colour if colour_index != colour_blank else black
         case 'k':
-            player_guess[index] = next_colour if colour_index is not colour_blank else red
+            player_guess[index] = next_colour if colour_index != colour_blank else red
         case 'l':
             if player_selection < 4:
                 player_selection += 1
@@ -124,17 +123,19 @@ def draw_ui():
 def guess():
     global current_cat, player_selection
     secret_copy = secret.copy()
+    hint[:] = [None]*4
     if blank not in player_guess:
         for i, each in enumerate(player_guess):
             if each == secret_copy[i]:
                 secret_copy[i] = blank
-                hint.append(hit)
-            else:
+                hint[i]=hit
+        for i, each in enumerate(player_guess):
+            if hint[i] is None:
                 if each in secret_copy:
-                    secret_copy[i] = blank
-                    hint.append(miss)
+                    secret_copy[secret_copy.index(each)] = blank
+                    hint[i]=miss
                 else:
-                    hint.append(blank)
+                    hint[i]=blank
 
         priority = {hit: 0, miss: 1, blank: 2}
         hint.sort(key=lambda h: priority[h])
