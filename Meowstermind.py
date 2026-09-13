@@ -42,9 +42,6 @@ def main():
 def clear_screen():
     subprocess.run('clear')
 
-def newline():
-    print("")
-
 def printf(chars):
     print(chars, end="")
 
@@ -76,7 +73,7 @@ def set_secret():
 def debug_secret():
     for each in secret:
         printf(each)
-    newline()
+    print()
 
 def update_game(key):
     global player_selection
@@ -85,27 +82,23 @@ def update_game(key):
     selected = player_guess[index]
 
     colours = len(colour_cycle)
-    colour_blank = colours+1 #loop through the colour cycle, blank is unselectable and between black and red
-    colour_index = colour_cycle.index(selected) if selected in colour_cycle else colour_blank
-    next_colour = colour_cycle[(colour_index + 1) % colours]
-    prev_colour = colour_cycle[(colour_index - 1) % colours]
+    colour_index = colour_cycle.index(selected) if selected in colour_cycle else None
+    next_colour = colour_cycle[(colour_index + 1) % colours] if colour_index is not None else red
+    prev_colour = colour_cycle[(colour_index - 1) % colours] if colour_index is not None else black
 
     match key:
         case 'h':
             if player_selection > 1:
                 player_selection -= 1
         case 'j':
-            player_guess[index] = prev_colour if colour_index != colour_blank else black
+            player_guess[index] = prev_colour
         case 'k':
-            player_guess[index] = next_colour if colour_index != colour_blank else red
+            player_guess[index] = next_colour
         case 'l':
             if player_selection < 4:
                 player_selection += 1
         case readchar.key.ENTER:
             guess()
-        case 'win':
-            draw_ui()
-            win()
 
 def draw_ui():
     clear_screen()
@@ -117,15 +110,15 @@ def draw_ui():
         printf(31 * " ")
         for meow_hint in hint_history[i]:
             printf(meow_hint)
-        newline()
-    newline()
+        print()
+    print()
     print("  " * (player_selection-1) + "⤓")
     for each in player_guess:
         printf(each)
     printf(" <- Player " + current_cat + " Meowster->  ")
     for each in meowster_display:
         printf(each)
-    newline()
+    print()
 
 def guess():
     global current_cat, player_selection
@@ -157,7 +150,8 @@ def guess():
         hint_history.append(hint[:])
         history.append(player_guess[:])
         if hint.count(hit) == 4:
-            update_game('win')
+            draw_ui()
+            win()
         player_guess[:] = [blank, blank, blank, blank]
         player_selection = 1
         hint.clear()
@@ -173,7 +167,7 @@ def win():
 def restart_game():
     global current_cat, player_selection
     player_guess[:] = [blank, blank, blank, blank]
-    feedback[:] = [blank, blank, blank, blank]
+    meowster_display[:] = [blank, blank, blank, blank]
     current_cat = neutral_cat
     player_selection = 1
     set_secret()
