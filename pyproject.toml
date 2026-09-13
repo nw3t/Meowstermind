@@ -1,0 +1,16 @@
+[project]
+name = "meowstermind"
+version = "0.1.0"
+description = "Meowstermind"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "readchar",
+]
+
+[project.scripts]
+meowstermind = "Meowstermind:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"

@@ -1,4 +1,4 @@
-#!/home/mykola/PycharmProjects/Meowstermind/.venv/bin/python
+#!/usr/bin/env python3
 
 import subprocess
 import random
