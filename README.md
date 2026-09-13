@@ -2,4 +2,12 @@
 
 This only works on linux because I am a chauvinist and can't be bothered to make a windows version.
 
-Download, then `chmod+x Meowstermind.bin` and run the bin, or download the whole repo and have readchar in your venv and then run the script.
+Download, then `chmod+x Meowstermind.bin` and run the bin
+
+**OR**
+
+Make sure that pipx is installed, for instance on Arch `sudo pacman -S python-pipx`
+
+then 
+
+`./install.sh`
