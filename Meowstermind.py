@@ -70,7 +70,6 @@ current_cat = neutral_cat
 def set_secret():
     secret[:] = [random.choice(colour_cycle) for _ in range(4)]
 
-
 def debug_secret():
     for each in secret:
         printf(each)
